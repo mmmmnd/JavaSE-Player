@@ -1,7 +1,5 @@
 package com.player.model;
 
-import java.util.Arrays;
-
 public class Music {
   private String id;
   private String name;
@@ -42,8 +40,7 @@ public class Music {
 
   @Override
   public String toString() {
-    return "播放器列表中的所有歌曲为" +
-        "歌曲信息：id为" + id + "," +
+    return "歌曲信息：id为" + id + "," +
         "歌曲名称为：" + name + "," +
         "演唱者为：" + sing + ","
         ;
