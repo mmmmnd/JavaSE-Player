@@ -1,6 +1,7 @@
 package com.player.test;
 
 
+import com.player.model.PlayListCollection;
 import com.player.model.PlayerList;
 import com.player.model.Song;
 
@@ -30,6 +31,15 @@ public class MainTest {
     playerList.addToPlayerList(song2);
     playerList.addToPlayerList(song3);
     playerList.addToPlayerList(song4);
+
+    Song song5 = new Song("s005", "e", "ee");
+    playerList.updatePlayerList("s002", song5);
+    playerList.deletePlayerList("s005");
     playerList.showAllPlayerList();
+
+    PlayListCollection playListCollection = new PlayListCollection();
+    playListCollection.addPlayList(playerList);
+    playListCollection.showAllPlayList();
+
   }
 }
