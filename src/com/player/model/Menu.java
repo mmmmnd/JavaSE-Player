@@ -26,6 +26,7 @@ public class Menu {
     System.out.println("           5--修改播放列表中的歌曲");
     System.out.println("           6--删除播放列表中的歌曲");
     System.out.println("           7--显示播放列表中的所有歌曲");
+    System.out.println("           8--导出歌单");
     System.out.println("           9--返回上一级菜单");
     System.out.println("*********************************************");
   }

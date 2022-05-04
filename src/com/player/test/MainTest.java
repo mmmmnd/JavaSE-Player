@@ -6,6 +6,7 @@ import com.player.model.PlayListCollection;
 import com.player.model.PlayerList;
 import com.player.model.Song;
 
+import java.io.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Set;
@@ -24,7 +25,6 @@ public class MainTest {
     Song SongList = null, songId = null, songName = null; //歌曲id
     Set<String> setPlC; //播放器列表name
     boolean flag = false;//判断歌曲id是否存在
-
 
     Menu menu = new Menu();
     while (true) {
@@ -158,7 +158,7 @@ public class MainTest {
                   }
 
                 }
-                 break;
+                break;
               case 4:
                 System.out.println("通过歌曲名称查询播放列表中的歌曲");
                 inputName = scanner.next();
@@ -246,6 +246,48 @@ public class MainTest {
                   plAll.showAllPlayerList();
                 }
                 break;
+              case 8:
+                System.out.println("导出歌单");
+
+                System.out.println("请输入要导出的播放列表名称");
+                inputName = scanner.next();
+                plName = playListCollection.getPlayListName(inputName);
+
+                if (plName == null) {
+                  System.out.println(inputName + "播放列表不存在！");
+                } else {
+                  File file = new File(inputName + ".txt");
+
+                  if (!file.exists()) {
+                    try {
+                      file.createNewFile();
+                      System.out.println(file.getName() + "文件创建成功！");
+                    } catch (IOException e) {
+                      e.printStackTrace();
+                    }
+                  }
+
+                  if (file.canWrite()) {
+                    try {
+                      ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
+                      ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
+                      for (Song s : plName.getMusicList()) oos.writeObject(s); //查找歌曲并添加到oos
+
+                      oos.flush();
+                      oos.close();
+
+                      SongList = (Song) ois.readObject();
+                      System.out.println(SongList);
+
+                      ois.close();
+                    } catch (IOException e) {
+                      e.printStackTrace();
+                    } catch (ClassNotFoundException e) {
+                      e.printStackTrace();
+                    }
+                  }
+                }
+                break;
               default:
                 System.out.println("请输入对应菜单！");
                 break;
@@ -325,5 +367,4 @@ public class MainTest {
       }
     }
   }
-
 }
