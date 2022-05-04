@@ -38,6 +38,7 @@ public class PlayerList {
     for (Song s : musicList) {
       System.out.println(s);
     }
+
   }
 
   /**
@@ -86,7 +87,7 @@ public class PlayerList {
       System.out.println("没有找到id为" + id + "的歌曲");
     } else {
       musicList.remove(s);
-      System.out.println("已通过id查找到歌曲进行删除");
+      System.out.println("已将到歌曲进行删除");
     }
   }
 
@@ -104,7 +105,7 @@ public class PlayerList {
     } else {
       musicList.remove(s);
       musicList.add(song);
-      System.out.println("已通过id查找到歌曲进行更新");
+      System.out.println("已将歌曲进行更新");
     }
   }
 

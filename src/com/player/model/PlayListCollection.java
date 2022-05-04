@@ -1,7 +1,6 @@
 package com.player.model;
 
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.Set;
 
 public class PlayListCollection {
@@ -60,12 +59,8 @@ public class PlayListCollection {
   /**
    * 显示所有播放列表名称
    */
-  public void showAllPlayList() {
-    Set<String> playerSet = getPlayerListHashMap().keySet();
-
-    System.out.println("播放列表名称为：");
-    for (String ps : playerSet) System.out.println(ps);
-
+  public Set<String> showAllPlayList() {
+    return getPlayerListHashMap().keySet();
   }
 
 }
